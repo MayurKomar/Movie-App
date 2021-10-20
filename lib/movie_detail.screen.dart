@@ -290,11 +290,13 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
         SizedBox(
           width: 15,
         ),
-        Text(text,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 17,
-            ))
+        Container(width: MediaQuery.of(context).size.width/1.5,
+          child: Text(text,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 17,
+              )),
+        )
       ],
     );
   }
