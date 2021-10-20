@@ -36,6 +36,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<MoviesProvider>(context);
@@ -71,6 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     Expanded(
                       child: TextField(
+                        controller: _controller,
                         onSubmitted: (val) {
                           provider.moviesList.clear();
                           provider.getMovies('$val');
@@ -84,9 +86,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                 color: Colors.white.withOpacity(0.7))),
                       ),
                     ),
-                    Image.asset(
-                      'assets/images/cancel.png',
-                      height: 25,
+                    GestureDetector(
+                      onTap: () {
+                        _controller.clear();
+                      },
+                      child: Image.asset(
+                        'assets/images/cancel.png',
+                        height: 25,
+                      ),
                     ),
                     SizedBox(
                       width: 15,
